@@ -1,4 +1,3 @@
-# Encrypt.js
+# encrypt.js
 
-This script runs in a Node.js environment.
-To create a Node.js environment, 
+This script runs in a node.js environment.
