@@ -1,13 +1,24 @@
 import crypto from 'sjcl'
+import pl from 'payload.js' 
 
-console.log("here");
-let privateKey = "67890";
-let payload = {plain:"The quick brown fox jumped over the lazy dog!", key:privateKey, cipher:"", sig:""};
-let sig = crypto.hash.sha256()
-payload.sig = sig.hash(payload.plain);
+const KEY = "12345"
 
-console.log("PAYLOAD.plain:\t", payload.plain);
-console.log("PAYLOAD.key:\t", payload.key);
-console.log("PAYLOAD.cipher:\t", payload.cipher=crypto.encrypt(payload.key,payload.plain));
-console.log("PLAIN:\t",payload.plain);
-console.log("SHA256:\t",payload.sig);
+let privateKey = "12345"
+let payload = pl("The quick brown fox jumped over the lazy dog!",privateKey)
+
+let digest = crypto.hash.sha256 
+digest = crypto.hash(payload.plain)
+
+console.log("length of digest bit array:",digest.length)
+
+// let digestString = String.fromCharCode(digestBits);
+
+// payload.sig = digestString;
+// let cipher = crypto.encrypt(payload.key,payload.plain);
+
+// console.log("PAYLOAD.plain:\t", payload.plain);
+// console.log("PAYLOAD.key:\t", payload.key);
+// console.log("PAYLOAD.cipher:\t", payload.cipher=cipher);
+
+// console.log("\nPLAIN:\t",payload.plain);
+// console.log("DIGEST:\t",payload.sig);
